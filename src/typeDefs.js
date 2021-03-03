@@ -10,5 +10,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
   }
+  type Mutation {
+    addUser(fullName: String, age: Int, home: String, uni: String): User
+  }
 `;
 module.exports = typeDefs;
