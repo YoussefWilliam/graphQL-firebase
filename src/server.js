@@ -1,10 +1,13 @@
 const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
 const firebase = require("firebase");
+const cors = require("cors");
+
 require("dotenv").config();
+
+const { ApolloServer } = require("apollo-server-express");
+
 const typeDefs = require("./typeDefs");
 const resolvers = require("./resolvers");
-const cors = require("cors");
 
 const app = express();
 

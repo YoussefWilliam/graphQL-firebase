@@ -1,14 +1,16 @@
 const fetch = require("node-fetch");
 
+const url = "https://graphql-34f89-default-rtdb.firebaseio.com/";
+
 const resolvers = {
   Query: {
     users: async () => {
       const data = await fetch(
-        "https://graphql-34f89-default-rtdb.firebaseio.com/users.json"
+        `${url}/users.json`
       );
       const dataJson = await data.json();
       const keys = Object.keys(dataJson);
-      const dataKeys = keys.map(user => {
+      const arrayOfUserData = keys.map(user => {
         let myUserData = dataJson[user];
         let myUserGraphQL = {
           fullName: myUserData.fullName,
@@ -16,9 +18,11 @@ const resolvers = {
           age: myUserData.age,
           uni: myUserData.uni,
         }
+        
         return myUserGraphQL;
       })
-      return dataKeys
+      console.log("data:::", arrayOfUserData)
+      return arrayOfUserData
     },
   },
 };
